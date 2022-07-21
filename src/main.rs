@@ -1,9 +1,9 @@
 use std::net::{TcpListener, TcpStream};
 use log::{info, error};
 
-fn handle_connection() {
+fn handle_connection(stream: TcpStream) {
    //...
-   println!("handle_connection ------");
+   println!("handle_connection ------ {:?}", stream);
 }
 
 fn main() -> std::io::Result<()> {
@@ -11,8 +11,8 @@ fn main() -> std::io::Result<()> {
 
     for stream in listener.incoming() {
         match stream {
-            Ok(_stream) => {
-                handle_connection();
+            Ok(stream) => {
+                handle_connection(stream);
             }
             Err(e) => {
                 println!("listener error {}", e)
