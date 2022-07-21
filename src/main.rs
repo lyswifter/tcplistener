@@ -7,7 +7,7 @@ fn handle_connection() {
 }
 
 fn main() -> std::io::Result<()> {
-    let listener = TcpListener::bind("127.0.0.1:4132").unwrap();
+    let listener = TcpListener::bind("0.0.0.0:4132").unwrap();
 
     for stream in listener.incoming() {
         match stream {
